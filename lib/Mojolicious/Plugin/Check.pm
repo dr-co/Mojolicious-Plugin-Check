@@ -89,7 +89,7 @@ check route/headers not business logic, you can`t save something in stash, etc.
 
     # Good example:
     $r->add_condition(integer   => sub {...});
-    $r->add_checker(user        => sub {...});
+    $app->add_checker(user        => sub {...});
     $r->get('/user/:id')->over(
         integer => 'id',    # good, simple integer check
         user    => 'id',    # good, delay check
@@ -110,13 +110,13 @@ check route/headers not business logic, you can`t save something in stash, etc.
 Same as add_condition, but delay execution to I<around_action> hook level.
 
     # Simple "true" checker example
-    $self->add_checker('true' => sub {
+    $app->add_checker('true' => sub {
         my ($route, $c, $captures, $pattern) = @_;
         return $captures->{$pattern} ? 1 : 0;
     });
 
     # You can use database and save objects in stash to use in controllers
-    $self->add_checker('user_exists' => sub {
+    $app->add_checker('user_exists' => sub {
         my ($route, $c, $captures, $pattern) = @_;
         my $id = $captures->{$pattern};
         my $db = $c->pg->db;
