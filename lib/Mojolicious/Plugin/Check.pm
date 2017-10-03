@@ -31,8 +31,6 @@ sub register {
     $app->hook(around_action => sub {
         my ($next, $c, $action, $last) = @_;
 
-        return $next->() unless $last;
-
         my $checkers    = $c->app->routes->{$conf->{stash_checkers}}    //= {};
         my $actions      = $c->stash->{$conf->{stash_actions}}          //= [];
 
