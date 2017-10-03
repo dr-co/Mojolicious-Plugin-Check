@@ -9,6 +9,7 @@ t/011_undef.t
 t/020_stashless.t
 t/030_save.t
 t/040_under.t
+t/050_nostash.t
 t/080_noconflict.t
 t/090_manifest.t
 t/091_pod.t
